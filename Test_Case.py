@@ -189,7 +189,7 @@ Address_Click = WebDriverWait(driver,10).until(
     EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'France')]"))
 )
 Address_Click.click()
-time.sleep(3)
+time.sleep(2)
 Confirm_Button = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Confirm Order')]"))
 )
