@@ -31,7 +31,7 @@ driver.get('https://staging.galileoprotocol.io/login')
 
 Email = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/ul/li/div/div[2]/div/input")))
-Email.send_keys("user22@mailinator.com")
+Email.send_keys("user20@yopmail.com")
 
 Email_Click = WebDriverWait(driver, 10).until(
     EC.visibility_of_element_located((By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/ul/li/div/div[2]/div/button")))
@@ -41,6 +41,33 @@ driver.execute_script("window.open('https://www.google.com','_blank');")
 
 driver.switch_to.window(driver.window_handles[1])
 
+driver.get('https://www.yopmail.com')
+time.sleep(2)
+
+Enter_User = WebDriverWait(driver,10).until(
+    EC.presence_of_element_located((By.XPATH,"/html/body/div[1]/div[2]/main/div[3]/div/div[1]/div[2]/div/div/form/div/div[1]/div[2]/div/input"))
+)
+Enter_User.click()
+Enter_User.send_keys("User20")
+
+Enter_User_Button = WebDriverWait(driver,10).until(
+    EC.presence_of_element_located((By.XPATH,"/html/body/div[1]/div[2]/main/div[3]/div/div[1]/div[2]/div/div/form/div/div[1]/div[4]/button"))
+)
+Enter_User_Button.click()
+
+
+iframe_index = 2
+driver.switch_to.frame(iframe_index)
+OTP_CSS_Selector = '#mail > div > div:nth-child(2) > h2'
+OTP = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, OTP_CSS_Selector))  # Wait for element presence
+)
+
+Text_to_copy = OTP.text
+pyperclip.copy(Text_to_copy)
+
+driver.switch_to.window(driver.window_handles[0])
+'''
 driver.get('https://www.mailinator.com')
 time.sleep(2)
 
@@ -59,7 +86,7 @@ time.sleep(2)
 SearchBar = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/main/div[2]/div[1]/div[5]/form/input'))
 )
-SearchBar.send_keys('user22')
+SearchBar.send_keys('user23')
 time.sleep(2)
 
 GoButton = WebDriverWait(driver, 10).until(
@@ -90,14 +117,14 @@ pyperclip.copy(text_to_copy)
 
 driver.switch_to.window(driver.window_handles[0])
 time.sleep(5)
-
+'''
 Enter_OTP = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.XPATH,
-                                    "/html/body/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div/div/div/div/div[2]/form/div[2]/div/div[2]/input"))
+    "/html/body/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/div/div/div/div/div/div[2]/form/div[2]/div/div[2]/input"))
 )
 Enter_OTP.click()
 Enter_OTP.send_keys(Keys.CONTROL, 'V')
-time.sleep(30)
+time.sleep(10)
 
 Current_Url = driver.current_url
 
@@ -113,13 +140,12 @@ if Current_Url == Expected_Url:
         EC.presence_of_element_located(
             (By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div/div[2]/div/form/div[2]/div/div/input"))
     )
-    LastName.send_keys("20")
+    LastName.send_keys("24")
     Check_Box = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located(
             (By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div/div[2]/div/form/div[5]/div[1]/label/span[1]/input"))
     )
     Check_Box.click()
-    time.sleep(5)
 
     SignUp_Button = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located(
@@ -137,19 +163,36 @@ else:
     print("")
 
 Market_Place = WebDriverWait(driver, 10).until(
-EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/span"))
+    EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/span"))
 )
 Market_Place.click()
-time.sleep(5)
+time.sleep(3)
 NFT = WebDriverWait(driver, 10).until(
     EC.visibility_of_element_located((By.XPATH, " /html/body/div[1]/div[2]/div[1]/div[3]/div[2]/div/div/div/div[2]/div/button/div[1]/img"))
 )
 NFT.click()
-time.sleep(5)
+time.sleep(3)
 Redeem_Button = WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.XPATH,"/html/body/div[1]/div[2]/div[1]/div[3]/div[2]/div/div/div/div/div[1]/div[1]/div/div/div[2]/div/div/div/div[7]/div/div/div/button"))
+    EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[1]/div[3]/div[2]/div/div/div/div/div[1]/div[1]/div/div/div[2]/div/div/div/div[7]/div/div/div/button"))
 )
 Redeem_Button.click()
 time.sleep(2)
 
+Address_Field = WebDriverWait(driver,10).until(
+    EC.presence_of_element_located((By.XPATH, "//div[@class= 'css-cmygff-indicatorContainer']"))
+)
+time.sleep(2)
+Address_Field.click()
+time.sleep(2)
+
+Address_Click = WebDriverWait(driver,10).until(
+    EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'France')]"))
+)
+Address_Click.click()
+time.sleep(3)
+Confirm_Button = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Confirm Order')]"))
+)
+Confirm_Button.click()
+time.sleep(20)
 driver.quit()
